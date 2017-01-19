@@ -28,6 +28,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;F:\Inne\boost_1_62_0\boost_1_62_0&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;F:\Inne\libtiff\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\gmock-1.7.0\gtest\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\gmock-1.7.0\include&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.815045398" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -40,15 +42,42 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.572736808" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
 								<option id="gnu.cpp.link.option.paths.1491617740" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;F:\Inne\libtiff\lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\gmock-1.7.0\make&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.402750845" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="tiff"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gmock_main"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.2068373817" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.634032642.466373678" name="/" resourcePath="test">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.952227093" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug" unusedChildren="">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.599920751" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.1563570156">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1577568145" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.676343549" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base.1117043191"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.861828217" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.1797177724">
+								<option id="gnu.cpp.compiler.option.include.paths.819879113" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\boost_1_62_0\boost_1_62_0&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\libtiff\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\gmock-1.7.0\gtest\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;F:\Inne\gmock-1.7.0\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/HW/test/}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.632609963" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1310078466" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1720040489">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1257057200" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.1574756361" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.1779965415"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.1601060418" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.572736808"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>

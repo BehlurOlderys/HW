@@ -8,9 +8,22 @@
 #include "tifffileopener.h"
 
 #include <boost/format.hpp>
+#include <fstream>
 #include <cstring>
 #include "tiffio.h"
 #include "Logger/ilogger.h"
+
+namespace
+{
+//*****************************************************************************
+bool CheckIfFileExists(const std::string& name)
+//*****************************************************************************
+{
+	std::ifstream f(name.c_str());
+	return f.good();
+}
+
+} // namespace
 
 //*****************************************************************************
 TiffFileOpener::TiffFileOpener(ILogger& logger) :
@@ -21,6 +34,11 @@ TiffFileOpener::TiffFileOpener(ILogger& logger) :
 RasterImagePtr TiffFileOpener::OpenFile(const std::string& sFileName)
 //*****************************************************************************
 {
+	if (!CheckIfFileExists(sFileName))
+	{
+		m_Logger.Log((boost::format("Plik o nazwie %s nie istnieje!") % sFileName).str());
+		return RasterImagePtr();
+	}
 	TIFF* tif = TIFFOpen(sFileName.c_str(), "r");
 	if (!tif)
 	{
