@@ -15,3 +15,30 @@ TEST(TiffFileOpenerTest, ShouldReturnNullWhenOpeningNotExistingFile)
 	EXPECT_EQ(nullptr, pImage);
 }
 
+//*****************************************************************************
+TEST(TiffFileOpenerTest, ShouldOpenOKTestPicture_8b)
+//*****************************************************************************
+{
+	StrictMock<MockLogger> mockLogger;
+	TiffFileOpener tiffFileOpener(mockLogger);
+	EXPECT_CALL(mockLogger, Log(_));
+	RasterImagePtr pImage = tiffFileOpener.OpenFile("data//test_8b.tif");
+	EXPECT_NE(nullptr, pImage);
+
+	EXPECT_EQ(7u, pImage->Height);
+	EXPECT_EQ(7u, pImage->Width);
+}
+
+//*****************************************************************************
+TEST(TiffFileOpenerTest, ShouldOpenOKTestPicture_16b)
+//*****************************************************************************
+{
+	StrictMock<MockLogger> mockLogger;
+	TiffFileOpener tiffFileOpener(mockLogger);
+	EXPECT_CALL(mockLogger, Log(_));
+	RasterImagePtr pImage = tiffFileOpener.OpenFile("data//test_16b.tif");
+	EXPECT_NE(nullptr, pImage);
+
+	EXPECT_EQ(7u, pImage->Height);
+	EXPECT_EQ(7u, pImage->Width);
+}
