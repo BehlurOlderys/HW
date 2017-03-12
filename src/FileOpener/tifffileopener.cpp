@@ -50,26 +50,29 @@ RasterImagePtr TiffFileOpener::OpenFile(const std::string& sFileName)
 
 	TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &image->Width);
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &image->Height);
+	TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &image->ChannelsPerPixel);
+	TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &image->DepthPerChannel);
+	TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &image->Photometric);
 
-	size_t npixels = image->GetPixelNumber();
-	const uint32 uSizeOfRasterInBytes = uint32(npixels * sizeof (uint32));
-	uint32* raster = (uint32*) _TIFFmalloc(uSizeOfRasterInBytes);
-	if (raster == NULL)
-	{
-		m_Logger.Log("Raster okazal sie nullem!");
-		return RasterImagePtr();
-	}
-	if (TIFFReadRGBAImage(tif,
-						  image->Width,
-						  image->Height,
-						  raster,
-						  0))
-	{
-		m_Logger.Log((boost::format("Plik ma szerokosc = %d, wysokosc = %d") % image->Width % image->Height).str());
-		image->Raster = new uint32[npixels];
-		std::memcpy(image->Raster, raster, uSizeOfRasterInBytes);
-	}
-	_TIFFfree(raster);
-	TIFFClose(tif);
+//	size_t npixels = image->GetPixelNumber();
+//	const uint32 uSizeOfRasterInBytes = uint32(npixels * sizeof (uint32));
+//	uint32* raster = (uint32*) _TIFFmalloc(uSizeOfRasterInBytes);
+//	if (raster == NULL)
+//	{
+//		m_Logger.Log("Raster okazal sie nullem!");
+//		return RasterImagePtr();
+//	}
+//	if (TIFFReadRGBAImage(tif,
+//						  image->Width,
+//						  image->Height,
+//						  raster,
+//						  0))
+//	{
+//		m_Logger.Log((boost::format("Plik ma szerokosc = %d, wysokosc = %d") % image->Width % image->Height).str());
+//		image->Raster = new uint32[npixels];
+//		std::memcpy(image->Raster, raster, uSizeOfRasterInBytes);
+//	}
+//	_TIFFfree(raster);
+//	TIFFClose(tif);
 	return image;
 }

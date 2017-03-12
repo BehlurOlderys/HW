@@ -23,7 +23,10 @@ struct RasterImage
 	RasterImage() :
 		Raster(),
 		Width(0),
-		Height(0) {}
+		Height(0),
+		DepthPerChannel(0),
+		ChannelsPerPixel(0),
+		Photometric(0){}
 
 	//*****************************************************************************
 	virtual ~RasterImage()
@@ -33,7 +36,7 @@ struct RasterImage
 	}
 
 	//*****************************************************************************
-	uint32 GetPixelValue(const i32 x, const i32 y) const
+	u32 GetPixelValue(const i32 x, const i32 y) const
 	//*****************************************************************************
 	{
 		static const i32 minX = 0;
@@ -43,7 +46,6 @@ struct RasterImage
 
 		const i32 xx = std::min(std::max(x, minX), maxX);
 		const i32 yy = std::min(std::max(y, minY), maxY);
-		std::cout <<"Index of "<<xx<<" and "<<yy<<" eq "<<(xx+yy*Width)<<std::endl;
 		return Raster[xx + yy*Width];
 	}
 
@@ -72,6 +74,9 @@ struct RasterImage
 	uint32* Raster;
 	uint32  Width;
 	uint32  Height;
+	uint32  DepthPerChannel;
+	uint32  ChannelsPerPixel;
+	uint32  Photometric;
 };
 
 typedef boost::shared_ptr<RasterImage> RasterImagePtr;

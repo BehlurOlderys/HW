@@ -2,6 +2,7 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 
+typedef char byte;
 typedef long long unsigned int u64;
 typedef long unsigned int u32;
 typedef unsigned int u16;
