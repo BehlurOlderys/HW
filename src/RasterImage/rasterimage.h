@@ -19,14 +19,16 @@ u32 CombineRGBToPixel(const u32 red, const u32 green, const u32 blue);
 //*****************************************************************************
 struct RasterImage
 {
-	RasterImage() :
-		Raster(),
-		Width(0),
-		Height(0),
-		DepthPerChannel(0),
-		ChannelsPerPixel(0),
-		Photometric(0),
-		SampleFormat(0){}
+   RasterImage() :
+      Raster(),
+      Width(0),
+      Height(0),
+      DepthPerChannel(0),
+      ChannelsPerPixel(0),
+      Photometric(0),
+      SampleFormat(0),
+      Compression(0),
+      FillOrder(0){}
 
 	//*****************************************************************************
 	virtual ~RasterImage()
@@ -81,7 +83,9 @@ struct RasterImage
             "Depth per channel = %d\n"
             "Channels per pixel = %d\n"
             "Photometric interpretation = %d (%s)\n"
-            "Sample format = %d (%s)")
+            "Sample format = %d (%s)\n"
+            "Compression = %d\n"
+            "FillOrder = %d")
       % Width
       % Height
       % DepthPerChannel
@@ -89,7 +93,9 @@ struct RasterImage
       % Photometric
       % PhotometricToString(Photometric)
       % SampleFormat
-      % SampleFormatToString(SampleFormat)).str();
+      % SampleFormatToString(SampleFormat)
+      % Compression
+      % FillOrder).str();
    }
 
 	u32* Raster;
@@ -99,6 +105,8 @@ struct RasterImage
 	u32  ChannelsPerPixel;
 	u32  Photometric;
 	u32  SampleFormat;
+	u32  Compression;
+	u32  FillOrder;
 };
 
 typedef boost::shared_ptr<RasterImage> RasterImagePtr;
