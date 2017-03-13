@@ -5,11 +5,10 @@
 #include <cstring>
 #include <vector>
 #include <boost/shared_ptr.hpp>
+#include <boost/format.hpp>
 #include "common.h"
 #include <iostream>
-
-typedef unsigned int uint32;
-
+#include "tiffutils.h"
 
 u32 GetRedFromPixel(const u32 pixel);
 u32 GetGreenFromPixel(const u32 pixel);
@@ -26,7 +25,8 @@ struct RasterImage
 		Height(0),
 		DepthPerChannel(0),
 		ChannelsPerPixel(0),
-		Photometric(0){}
+		Photometric(0),
+		SampleFormat(0){}
 
 	//*****************************************************************************
 	virtual ~RasterImage()
@@ -50,15 +50,15 @@ struct RasterImage
 	}
 
 	//*****************************************************************************
-	uint32 GetPixelNumber()
+	u32 GetPixelNumber()
 	//*****************************************************************************
 	{
-		return uint32(Width*Height);
+		return u32(Width*Height);
 	}
-	uint32 GetRPixel(const u32 index){ return GetRedFromPixel  (Raster[index]); }
-	uint32 GetGPixel(const u32 index){ return GetGreenFromPixel(Raster[index]); }
-	uint32 GetBPixel(const u32 index){ return GetBlueFromPixel (Raster[index]); }
-	uint32 GetLum	(const u32 index){ return GetLumFromPixel  (Raster[index]); }
+	u32 GetRPixel(const u32 index){ return GetRedFromPixel  (Raster[index]); }
+	u32 GetGPixel(const u32 index){ return GetGreenFromPixel(Raster[index]); }
+	u32 GetBPixel(const u32 index){ return GetBlueFromPixel (Raster[index]); }
+	u32 GetLum	(const u32 index){ return GetLumFromPixel  (Raster[index]); }
 
 	u32 GetMaxValue();
 
@@ -66,17 +66,39 @@ struct RasterImage
 	void CopySizeOnlyFrom(const boost::shared_ptr<RasterImage> pImage)
 	//*****************************************************************************
 	{
-		Raster = new uint32[pImage->GetPixelNumber()];
+		Raster = new u32[pImage->GetPixelNumber()];
 		Width = pImage->Width;
 		Height = pImage->Height;
-		std::memset(Raster, 0, pImage->GetPixelNumber()* sizeof(uint32));
+		std::memset(Raster, 0, pImage->GetPixelNumber()* sizeof(u32));
 	}
-	uint32* Raster;
-	uint32  Width;
-	uint32  Height;
-	uint32  DepthPerChannel;
-	uint32  ChannelsPerPixel;
-	uint32  Photometric;
+
+   //*****************************************************************************
+   std::string ToString()
+   //*****************************************************************************
+   {
+      return (boost::format("Width = %d\n"
+            "Height  = %d\n"
+            "Depth per channel = %d\n"
+            "Channels per pixel = %d\n"
+            "Photometric interpretation = %d (%s)\n"
+            "Sample format = %d (%s)")
+      % Width
+      % Height
+      % DepthPerChannel
+      % ChannelsPerPixel
+      % Photometric
+      % PhotometricToString(Photometric)
+      % SampleFormat
+      % SampleFormatToString(SampleFormat)).str();
+   }
+
+	u32* Raster;
+	u32  Width;
+	u32  Height;
+	u32  DepthPerChannel;
+	u32  ChannelsPerPixel;
+	u32  Photometric;
+	u32  SampleFormat;
 };
 
 typedef boost::shared_ptr<RasterImage> RasterImagePtr;

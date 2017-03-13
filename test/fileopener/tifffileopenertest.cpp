@@ -59,7 +59,7 @@ TEST_F(TiffFileOpenerTest, ShouldCorrectlyReadDepthAndChannelInfo_8b_BW)
 	EXPECT_EQ(3328u, pImage->Height);
 	EXPECT_EQ(1u, pImage->ChannelsPerPixel);
 	EXPECT_EQ(8u, pImage->DepthPerChannel);
-	EXPECT_EQ(static_cast<uint32>(PHOTOMETRIC_MINISBLACK), pImage->Photometric);
+   EXPECT_EQ(static_cast<uint32>(PHOTOMETRIC_MINISBLACK), pImage->Photometric);
 }
 
 //*****************************************************************************

@@ -8,8 +8,8 @@
 class StdOutLogger : public ILogger
 {
 public:
-		 StdOutLogger(){}
-	void Log		 (const std::string& text);
+        StdOutLogger(){}
+   void Log         (const std::string& text);
 };
 
 #endif // LOGGER_STDOUTLOGGER_H_ 

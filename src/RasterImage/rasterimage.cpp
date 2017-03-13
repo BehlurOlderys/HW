@@ -10,7 +10,7 @@
 u32 GetRedFromPixel		(const u32 pixel){ return pixel & 0xff; }
 u32 GetGreenFromPixel	(const u32 pixel){ return ( pixel >> 8 ) & 0xff; }
 u32 GetBlueFromPixel	(const u32 pixel){ return ( pixel >> 16 ) & 0xff; }
-u32 GetLumFromPixel		(const u32 pixel){ return uint32((GetRedFromPixel(pixel) + GetGreenFromPixel(pixel) + GetBlueFromPixel(pixel)) / 3); }
+u32 GetLumFromPixel		(const u32 pixel){ return u32((GetRedFromPixel(pixel) + GetGreenFromPixel(pixel) + GetBlueFromPixel(pixel)) / 3); }
 //*****************************************************************************
 u32 CombineRGBToPixel	(const u32 red, const u32 green, const u32 blue)
 //*****************************************************************************

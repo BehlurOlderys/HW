@@ -52,7 +52,12 @@ RasterImagePtr TiffFileOpener::OpenFile(const std::string& sFileName)
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &image->Height);
 	TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &image->ChannelsPerPixel);
 	TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &image->DepthPerChannel);
-	TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &image->Photometric);
+   TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &image->Photometric);
+   TIFFGetField(tif, TIFFTAG_SAMPLEFORMAT, &image->SampleFormat);
+
+   m_Logger.Log((boost::format("Otworzylem plik o nazwie %s!") % sFileName).str());
+
+   m_Logger.Log((boost::format("Parametry: \n %s") % image->ToString()).str());
 
 //	size_t npixels = image->GetPixelNumber();
 //	const uint32 uSizeOfRasterInBytes = uint32(npixels * sizeof (uint32));
